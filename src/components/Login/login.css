@@ -1,0 +1,40 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  margin-top: 10rem;
+  width: 17rem;
+}
+
+input {
+  padding: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.671);
+}
+
+::placeholder {
+  font-size: 0.7rem;
+  color: #464646;
+}
+
+.forgot {
+  font-size: 0.7rem;
+  margin-bottom: 20px;
+  color: #1565c0;
+}
+
+.account {
+  color: #464646;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.account span {
+  color: #1565c0;
+  font-weight: 600;
+}
