@@ -16,7 +16,10 @@ export default function Login() {
             Login to your Account
           </Typography>
           <input type="text" placeholder="Enter Email *" />
-          <input type="text" placeholder="Password *" />
+          <div className="password-input">
+            <input type="text" placeholder="Password *" />
+            <VisibilityOffIcon className="icon" sx={{ fontSize: "1rem" }} />
+          </div>
           <p className="forgot">Forgot Password?</p>
           <Button
             fullWidth
@@ -33,8 +36,6 @@ export default function Login() {
           <p className="account">
             Don't have an account? <span> Register now </span>
           </p>
-
-          {/* <VisibilityOffIcon /> */}
         </form>
       </div>
     </div>

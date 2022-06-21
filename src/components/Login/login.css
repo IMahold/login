@@ -21,6 +21,18 @@ input {
   color: #464646;
 }
 
+.password-input {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  color: gray;
+  font-size: 0.4rem;
+}
+
 .forgot {
   font-size: 0.7rem;
   margin-bottom: 20px;
