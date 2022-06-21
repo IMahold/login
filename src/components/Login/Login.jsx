@@ -11,14 +11,23 @@ export default function Login() {
         <form action="">
           <Typography
             variant="h6"
-            sx={{ marginBottom: "20px", color: "#464646", fontWeight: "600" }}
+            sx={{ marginBottom: "10px", color: "#464646", fontWeight: "600" }}
           >
             Login to your Account
           </Typography>
           <input type="text" placeholder="Enter Email *" />
           <input type="text" placeholder="Password *" />
           <p className="forgot">Forgot Password?</p>
-          <Button fullWidth variant="contained" sx={{ fontSize: "0.6rem" }}>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{
+              fontSize: "0.8rem",
+              padding: "7px",
+              textTransform: "capitalize",
+              fontWeight: "600",
+            }}
+          >
             Login
           </Button>
           <p className="account">
