@@ -35,8 +35,9 @@ input {
 
 .forgot {
   font-size: 0.7rem;
+  font-weight: 600;
   margin-bottom: 20px;
-  color: #1565c0;
+  color: #006ab3;
 }
 
 .account {
@@ -47,6 +48,6 @@ input {
 }
 
 .account span {
-  color: #1565c0;
+  color: #006ab3;
   font-weight: 600;
 }
