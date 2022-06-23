@@ -30,7 +30,11 @@ input {
   top: 16px;
   right: 20px;
   color: gray;
-  font-size: 0.4rem;
+  font-size: 1rem;
+}
+
+.icon:hover {
+  cursor: pointer;
 }
 
 .forgot {

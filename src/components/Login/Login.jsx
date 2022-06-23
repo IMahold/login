@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+// import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { Typography } from "@mui/material";
 import "./login.css";
 
 export default function Login() {
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordInput, setPasswordInput] = useState("");
+  const handlePasswordChange = (e) => {
+    setPasswordInput(e.target.value);
+  };
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   return (
     <div className="login-container">
       <div className="login-form">
@@ -17,8 +32,20 @@ export default function Login() {
           </Typography>
           <input type="text" placeholder="Enter Email *" />
           <div className="password-input">
-            <input type="text" placeholder="Password *" />
-            <VisibilityOffIcon className="icon" sx={{ fontSize: "1rem" }} />
+            <input
+              type={passwordType}
+              onChange={handlePasswordChange}
+              value={passwordInput}
+              name="password"
+              placeholder="Password *"
+            />
+            <span onClick={togglePassword}>
+              {passwordType === "password" ? (
+                <AiOutlineEyeInvisible className="icon" />
+              ) : (
+                <AiOutlineEye className="icon" />
+              )}
+            </span>
           </div>
           <p className="forgot">Forgot Password?</p>
           <Button
