@@ -31,6 +31,8 @@ export default function Login() {
           >
             Login to your Account
           </Typography>
+
+          {/* Email input */}
           <div className="password-input">
             <div className="placeholder-mail">
               <span class="star">*</span>
