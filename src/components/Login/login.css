@@ -25,6 +25,23 @@ input {
   position: relative;
 }
 
+.placeholder-mail {
+  position: absolute;
+  top: 12px;
+  left: 76px;
+}
+
+.placeholder-pass {
+  position: absolute;
+  top: 12px;
+  left: 67px;
+}
+
+.star {
+  font-size: 12px;
+  color: red;
+}
+
 .icon {
   position: absolute;
   top: 16px;

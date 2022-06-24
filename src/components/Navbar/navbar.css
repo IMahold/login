@@ -20,22 +20,24 @@
   margin-bottom: 2px;
 }
 
+.line {
+  height: 3px;
+  position: absolute;
+}
+
 .line1 {
   width: 99.4%;
-  position: absolute;
   top: 0px;
   right: 0;
 }
 
 .line2 {
-  position: absolute;
-  top: 8px;
+  top: 6px;
   right: 0;
   width: 99.7%;
 }
 
 .line3 {
-  position: absolute;
-  top: 16px;
+  top: 12px;
   width: 100%;
 }

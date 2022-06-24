@@ -12,9 +12,9 @@ export default function Navbar() {
         <img src={imag} alt="" />
       </div>
       <div className="nav-lines">
-        <img className="line1" src={line1} alt="" />
-        <img className="line2" src={line2} alt="" />
-        <img className="line3" src={line3} alt="" />
+        <img className="line line1" src={line1} alt="" />
+        <img className="line line2" src={line2} alt="" />
+        <img className="line line3" src={line3} alt="" />
       </div>
     </div>
   );

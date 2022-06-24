@@ -31,14 +31,25 @@ export default function Login() {
           >
             Login to your Account
           </Typography>
-          <input type="text" placeholder="Enter Email *" />
           <div className="password-input">
+            <div className="placeholder-mail">
+              <span class="star">*</span>
+            </div>
+            <input type="text" placeholder="Enter Email" required />
+          </div>
+
+          {/* Password input */}
+          <div className="password-input">
+            <div className="placeholder-pass">
+              <span class="star">*</span>
+            </div>
             <input
               type={passwordType}
               onChange={handlePasswordChange}
               value={passwordInput}
               name="password"
-              placeholder="Password *"
+              placeholder="Password"
+              required
             />
             <span onClick={togglePassword}>
               {passwordType === "password" ? (
