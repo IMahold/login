@@ -5,6 +5,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { Typography } from "@mui/material";
 import "./login.css";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [passwordType, setPasswordType] = useState("password");
@@ -48,18 +49,20 @@ export default function Login() {
             </span>
           </div>
           <p className="forgot">Forgot Password?</p>
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{
-              fontSize: "0.8rem",
-              padding: "7px",
-              textTransform: "capitalize",
-              fontWeight: "600",
-            }}
-          >
-            Login
-          </Button>
+          <Link to="/upload" style={{ textDecoration: "none" }}>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                fontSize: "0.8rem",
+                padding: "7px",
+                textTransform: "capitalize",
+                fontWeight: "600",
+              }}
+            >
+              Login
+            </Button>
+          </Link>
           <p className="account">
             Don't have an account? <span> Register now </span>
           </p>
