@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-// import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { Typography } from "@mui/material";
@@ -10,6 +9,8 @@ import { Link } from "react-router-dom";
 export default function Login() {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
+  const [email, setEmail] = useState("");
+
   const handlePasswordChange = (e) => {
     setPasswordInput(e.target.value);
   };
@@ -34,24 +35,40 @@ export default function Login() {
 
           {/* Email input */}
           <div className="password-input">
-            <div className="placeholder-mail">
-              <span class="star">*</span>
-            </div>
-            <input type="text" placeholder="Enter Email" required />
+            <label
+              htmlFor="emailInput"
+              className={email.length === 0 ? "label" : "label label-active"}
+            >
+              <span className="placeholder-text">Enter Email </span>
+              <span className="star">*</span>
+            </label>
+
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              id="emailInput"
+            />
           </div>
 
           {/* Password input */}
           <div className="password-input">
-            <div className="placeholder-pass">
-              <span class="star">*</span>
-            </div>
+            <label
+              htmlFor="passwordInput"
+              className={
+                passwordInput.length === 0 ? "label" : "label label-active"
+              }
+            >
+              <span className="placeholder-text">Password </span>
+              <span className="star">*</span>
+            </label>
+
             <input
               type={passwordType}
               onChange={handlePasswordChange}
               value={passwordInput}
               name="password"
-              placeholder="Password"
-              required
+              id="passwordInput"
             />
             <span onClick={togglePassword}>
               {passwordType === "password" ? (
@@ -77,7 +94,10 @@ export default function Login() {
             </Button>
           </Link>
           <p className="account">
-            Don't have an account? <span> Register now </span>
+            Don't have an account?{" "}
+            <Link to="/signup">
+              <span> Register now </span>
+            </Link>
           </p>
         </form>
       </div>

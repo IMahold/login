@@ -1,0 +1,50 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-form {
+  margin-top: 10rem;
+  width: 17rem;
+}
+
+.email-input {
+  margin-bottom: 20px;
+}
+
+.signup-form p {
+  padding-bottom: 10px;
+  font-size: 0.9rem;
+  color: #464646;
+}
+
+.pass-input {
+  position: relative;
+}
+
+.show-icon {
+  position: absolute;
+  top: 50%;
+  right: 2ch;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 1rem;
+}
+
+.show-icon:hover {
+  cursor: pointer;
+}
+
+.checkbox {
+  display: flex;
+  margin: 30px 0 8px;
+}
+
+input[type="checkbox"] {
+  margin-top: 2px;
+  width: 5%;
+}
+
+.checkbox p {
+  padding-left: 10px;
+}

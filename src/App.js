@@ -4,6 +4,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Upload from "./components/Upload/Upload";
+import Signup from "./components/SIgnup/Signup";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/upload" component={Upload} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </BrowserRouter>
     </div>

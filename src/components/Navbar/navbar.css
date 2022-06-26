@@ -23,10 +23,10 @@
 .line {
   height: 3px;
   position: absolute;
+  width: 100%;
 }
 
 .line1 {
-  width: 99.4%;
   top: 0px;
   right: 0;
 }
@@ -34,10 +34,8 @@
 .line2 {
   top: 6px;
   right: 0;
-  width: 99.7%;
 }
 
 .line3 {
   top: 12px;
-  width: 100%;
 }

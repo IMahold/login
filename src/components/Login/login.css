@@ -8,33 +8,41 @@
   width: 17rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 input {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 20px 16px;
   width: 100%;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.671);
 }
 
-::placeholder {
-  font-size: 0.7rem;
+.placeholder-text {
+  font-size: 0.8rem;
   color: #464646;
+}
+
+#emailInput {
+  font-size: 0.9rem;
 }
 
 .password-input {
   position: relative;
+  margin-bottom: 20px;
 }
 
-.placeholder-mail {
+.label {
   position: absolute;
-  top: 12px;
-  left: 76px;
+  left: 2ch;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.5s;
 }
 
-.placeholder-pass {
-  position: absolute;
-  top: 12px;
-  left: 67px;
+.label-active {
+  transform: translateY(-150%);
 }
 
 .star {
@@ -44,8 +52,9 @@ input {
 
 .icon {
   position: absolute;
-  top: 16px;
-  right: 20px;
+  top: 50%;
+  right: 2ch;
+  transform: translateY(-50%);
   color: gray;
   font-size: 1rem;
 }
