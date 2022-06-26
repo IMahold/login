@@ -24,19 +24,24 @@ export default function Upload() {
       <div className="border">
         <div className="box">
           <p>Drag and drop upload file or import file from your computer</p>
-
-          <input
-            onChange={handleInput}
-            type="file"
-            id="file"
-            name="file"
-            hidden="hidden"
-          />
-          <label className="button" htmlFor="file">
-            <ImAttachment className="attach-icon" />
-            Browse
-          </label>
+          <form action="">
+            <input
+              onChange={handleInput}
+              type="file"
+              id="file"
+              name="file"
+              hidden="hidden"
+            />
+            <label className="button" htmlFor="file">
+              <ImAttachment className="attach-icon" />
+              Browse
+            </label>
+          </form>
         </div>
+      </div>
+
+      <div className="uploaded">
+        <p>Uploaded</p>
       </div>
     </div>
   );
