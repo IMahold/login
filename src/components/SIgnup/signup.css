@@ -5,7 +5,7 @@
 
 .signup-form {
   margin-top: 10rem;
-  width: 17rem;
+  width: 18rem;
 }
 
 .email-input {
@@ -47,4 +47,10 @@ input[type="checkbox"] {
 
 .checkbox p {
   padding-left: 10px;
+}
+
+.conditions ul {
+  margin: 10px 0 0 10px;
+  font-size: 11px;
+  /* display: none; */
 }

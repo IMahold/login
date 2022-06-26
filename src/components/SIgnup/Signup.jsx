@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const handlePasswordChange = (e) => {
     setPasswordInput(e.target.value);
@@ -25,14 +26,12 @@ export default function Signup() {
       <div className="signup-form">
         <form action="">
           {/* Email input */}
-
           <div className="email-input">
             <p>
               Email address <span className="star">*</span>
             </p>
             <input type="text" placeholder="Enter email address" />
           </div>
-
           {/* Password input */}
           <div>
             <p>
@@ -55,11 +54,24 @@ export default function Signup() {
               </span>
             </div>
           </div>
+          {checked === true && (
+            <div className="conditions">
+              <ul>
+                <li>Contains at least 6 characters</li>
+                <li>Contains both lower (a-z) and upper case letters (A-Z)</li>
+                <li>Contains at least one number (0-9) or a symbol</li>
+              </ul>
+            </div>
+          )}
+
           <div className="checkbox">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={() => setChecked(!checked)}
+              checked={checked}
+            />
             <p>I agree to terms & conditions</p>
           </div>
-
           <Button
             fullWidth
             variant="contained"
