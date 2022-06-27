@@ -9,6 +9,7 @@ export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
   const [checked, setChecked] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handlePasswordChange = (e) => {
     setPasswordInput(e.target.value);
@@ -25,35 +26,54 @@ export default function Signup() {
     <div className="signup-container">
       <div className="signup-form">
         <form action="">
+          <p className="register-text">Create Account</p>
           {/* Email input */}
-          <div className="email-input">
-            <p>
-              Email address <span className="star">*</span>
-            </p>
-            <input type="text" placeholder="Enter email address" />
+          <div className="password-input">
+            <label
+              htmlFor="emailInput"
+              className={email.length === 0 ? "label" : "label label-active"}
+            >
+              <span className="placeholder-text">Enter Email </span>
+              <span className="star">*</span>
+            </label>
+
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              id="emailInput"
+            />
           </div>
+
           {/* Password input */}
-          <div>
-            <p>
-              Create password <span className="star">*</span>
-            </p>
-            <div className="pass-input">
-              <input
-                type={passwordType}
-                onChange={handlePasswordChange}
-                value={passwordInput}
-                name="password"
-                placeholder="Enter password"
-              />
-              <span onClick={togglePassword}>
-                {passwordType === "password" ? (
-                  <AiOutlineEyeInvisible className="show-icon" />
-                ) : (
-                  <AiOutlineEye className="show-icon" />
-                )}
-              </span>
-            </div>
+
+          <div className="password-input">
+            <label
+              htmlFor="passwordInput"
+              className={
+                passwordInput.length === 0 ? "label" : "label label-active"
+              }
+            >
+              <span className="placeholder-text">Password </span>
+              <span className="star">*</span>
+            </label>
+
+            <input
+              type={passwordType}
+              onChange={handlePasswordChange}
+              value={passwordInput}
+              name="password"
+              id="passwordInput"
+            />
+            <span onClick={togglePassword}>
+              {passwordType === "password" ? (
+                <AiOutlineEyeInvisible className="icon" />
+              ) : (
+                <AiOutlineEye className="icon" />
+              )}
+            </span>
           </div>
+
           {checked === true && (
             <div className="conditions">
               <ul>
@@ -63,27 +83,27 @@ export default function Signup() {
               </ul>
             </div>
           )}
-
-          <div className="checkbox">
+          {/* <div className="checkbox">
             <input
               type="checkbox"
               onChange={() => setChecked(!checked)}
               checked={checked}
             />
             <p>I agree to terms & conditions</p>
-          </div>
-          <Button
-            fullWidth
-            variant="contained"
-            sx={{
-              fontSize: "0.8rem",
-              padding: "7px",
-              textTransform: "capitalize",
-              fontWeight: "600",
-            }}
-          >
-            Register Account
-          </Button>
+          </div> */}
+
+          <label for="check" className="container">
+            <input
+              className="checkbox-input"
+              type="checkbox"
+              id="check"
+              onChange={() => setChecked(!checked)}
+              checked={checked}
+            />
+            <span className="mark"></span>I agree to terms & conditions
+          </label>
+
+          <button className="register-button">Register Account</button>
         </form>
       </div>
     </div>

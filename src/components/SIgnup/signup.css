@@ -4,18 +4,20 @@
 }
 
 .signup-form {
-  margin-top: 10rem;
+  margin-top: 160px;
   width: 426px;
+}
+
+.register-text {
+  font-size: 25px;
+  color: #525252;
+  font-weight: 700;
+  line-height: 34px;
+  margin-bottom: 24px;
 }
 
 .email-input {
   margin-bottom: 20px;
-}
-
-.signup-form p {
-  padding-bottom: 10px;
-  font-size: 0.9rem;
-  color: #464646;
 }
 
 .pass-input {
@@ -35,21 +37,79 @@
   cursor: pointer;
 }
 
-.checkbox {
+/* .checkbox {
   display: flex;
-  margin: 30px 0 8px;
+  align-items: center;
+} */
+
+/* input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+} */
+
+.container {
+  position: relative;
+  color: #696f79;
+  font-weight: 400;
+  font-size: 16px;
+  left: 40px;
+  top: -40px;
+  cursor: pointer;
 }
 
-input[type="checkbox"] {
-  margin-top: 2px;
-  width: 5%;
+.container input {
+  visibility: hidden;
+  cursor: pointer;
 }
 
-.checkbox p {
-  padding-left: 10px;
+.mark {
+  position: absolute;
+  top: 25px;
+  left: -40px;
+  width: 17px;
+  height: 17px;
+  border-radius: 2px;
+  border: 1px solid #838383;
+}
+
+.container input:checked ~ .mark {
+  background: #006ab3;
+  border: none;
+}
+
+.mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .mark:after {
+  display: block;
+}
+
+.container .mark:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 .conditions ul {
   margin: 10px 0 0 10px;
-  font-size: 11px;
+  font-size: 14px;
+}
+
+.register-button {
+  margin-left: 13px;
+  background: #006ab3;
+  border-radius: 6px;
+  width: 400px;
+  height: 57.75px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ffffff;
 }
