@@ -3,3 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Holtwood One SC", serif;
+  font-family: "Open Sans", sans-serif;
+}

@@ -26,13 +26,7 @@ export default function Login() {
     <div className="login-container">
       <div className="login-form">
         <form action="">
-          <Typography
-            variant="h6"
-            sx={{ marginBottom: "10px", color: "#464646", fontWeight: "600" }}
-          >
-            Login to your Account
-          </Typography>
-
+          <p className="main-text">Login to your Account</p>
           {/* Email input */}
           <div className="password-input">
             <label

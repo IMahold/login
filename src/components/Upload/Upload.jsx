@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { ImAttachment } from "react-icons/im";
 import "./upload.css";
@@ -6,11 +7,46 @@ export default function Upload() {
   /**
    *  @param {React.ChangeEvent<HTMLInputElement>} e
    */
+
+  const [files, setFiles] = useState([]);
+
+  // const handleInput = async (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
+  //   file.isUploading = true;
+  //   setFiles([...files, file]);
+
+  //   // upload file
+
+  //   const formData = new FormData();
+  //   formData.append(file.name, file, file.name);
+
+  //   axios
+  //     .post("http://localhost:8080/upload", formData)
+  //     .then((res) => {
+  //       file.isUploading = false;
+  //       setFiles([...files, file]);
+  //     })
+  //     .catch((err) => {
+  //       //inform the user
+  //       console.log("Error message", err);
+  //       removeFile(file.name);
+  //     });
+  // };
+
+  //remove files
+
+  // const removeFile = (filename) => {
+  //   setFiles(files.filter((file) => file.name !== filename));
+  // };
+
   const handleInput = async (e) => {
     const file = e.target.files[0];
     if (!file) {
       return;
     }
+    file.isUploading = true;
+    setFiles([...files, file]);
     console.log("FILES", file);
     const data = new FormData();
     data.append("file", file);
@@ -42,6 +78,7 @@ export default function Upload() {
 
       <div className="uploaded">
         <p>Uploaded</p>
+        {/* <p>{files}</p> */}
       </div>
     </div>
   );
