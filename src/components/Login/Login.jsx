@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { Typography } from "@mui/material";
 import "./login.css";
 import { Link } from "react-router-dom";
 
@@ -74,18 +72,7 @@ export default function Login() {
           </div>
           <p className="forgot">Forgot Password?</p>
           <Link to="/upload" style={{ textDecoration: "none" }}>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{
-                fontSize: "0.8rem",
-                padding: "7px",
-                textTransform: "capitalize",
-                fontWeight: "600",
-              }}
-            >
-              Login
-            </Button>
+            <button className="login-button">Login</button>
           </Link>
           <p className="account">
             Don't have an account?{" "}
