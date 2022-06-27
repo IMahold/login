@@ -70,17 +70,18 @@ export default function Login() {
               )}
             </span>
           </div>
-          <p className="forgot">Forgot Password?</p>
-          <Link to="/upload" style={{ textDecoration: "none" }}>
-            <button className="login-button">Login</button>
-          </Link>
-          <p className="account">
-            Don't have an account?{" "}
-            <Link to="/signup">
-              <span> Register now </span>
-            </Link>
-          </p>
         </form>
+
+        <p className="forgot">Forgot Password?</p>
+        <Link to="/upload" style={{ textDecoration: "none" }}>
+          <button className="login-button">Login</button>
+        </Link>
+        <p className="account">
+          Don't have an account?{" "}
+          <Link to="/signup">
+            <span> Register now </span>
+          </Link>
+        </p>
       </div>
     </div>
   );

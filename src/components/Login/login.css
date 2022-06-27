@@ -80,6 +80,7 @@ input {
 }
 
 .login-button {
+  margin-left: 13px;
   background: #006ab3;
   border-radius: 6px;
   width: 400px;
