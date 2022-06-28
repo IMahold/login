@@ -40,15 +40,15 @@
 /* .checkbox {
   display: flex;
   align-items: center;
-} */
+}
 
-/* input[type="checkbox"] {
+input[type="checkbox"] {
   width: 17px;
   height: 17px;
 } */
 
 .conditions ul {
-  margin: 10px 0 0 10px;
+  margin: 0 0 0 20px;
   font-size: 14px;
   position: relative;
 }
@@ -118,9 +118,21 @@
   cursor: pointer;
 }
 
+.checkbox-input {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #d9d9d9;
+  color: #171725;
+  font-size: 16px;
+}
+
 /* Validation part */
 
 /* Add a red text color and an "x" when the requirements are wrong */
+
+.defaultList {
+  color: black;
+}
 
 .invalid {
   color: red;
@@ -129,7 +141,7 @@
 
 .invalid::before {
   position: relative;
-  left: -3px;
+  left: -7px;
   content: "\00d7";
 }
 
@@ -137,10 +149,11 @@
 
 .valid {
   color: blue;
+  list-style-type: none;
 }
 
 .valid:before {
   position: relative;
-  left: -3px;
+  left: -7px;
   content: "\2713";
 }

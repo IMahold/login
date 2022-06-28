@@ -47,7 +47,7 @@ export default function Upload() {
     }
     file.isUploading = true;
     setFiles([...files, file]);
-    console.log("FILES", file);
+    // console.log("FILES", file);
     const data = new FormData();
     data.append("file", file);
     /**
@@ -55,6 +55,8 @@ export default function Upload() {
      * here comes the fetch axios...
      */
   };
+
+  console.log(files);
   return (
     <div className="upload-container">
       <div className="border">
@@ -67,6 +69,7 @@ export default function Upload() {
               id="file"
               name="file"
               hidden="hidden"
+              multiple
             />
             <label className="button" htmlFor="file">
               <ImAttachment className="attach-icon" />
@@ -78,7 +81,9 @@ export default function Upload() {
 
       <div className="uploaded">
         <p>Uploaded</p>
-        {/* <p>{files}</p> */}
+        {files.map((item) => (
+          <div>{item.name}</div>
+        ))}
       </div>
     </div>
   );
