@@ -47,12 +47,6 @@ input[type="checkbox"] {
   height: 17px;
 } */
 
-.conditions ul {
-  margin: 0 0 0 20px;
-  font-size: 14px;
-  position: relative;
-}
-
 .container {
   position: relative;
   color: #696f79;
@@ -130,30 +124,39 @@ input[type="checkbox"] {
 
 /* Add a red text color and an "x" when the requirements are wrong */
 
+.conditions ul li {
+  margin: 0 0 0 10px;
+  font-size: 14px;
+}
+
+.conditions ul {
+  margin-bottom: 15px;
+}
+
 .defaultList {
   color: black;
 }
 
 .invalid {
-  color: red;
+  color: #e41d1d;
   list-style-type: none;
 }
 
 .invalid::before {
   position: relative;
-  left: -7px;
+  left: -6px;
   content: "\00d7";
 }
 
 /* Add a blue text color and a checkmark when the requirements are right */
 
 .valid {
-  color: blue;
+  color: #006ab3;
   list-style-type: none;
 }
 
 .valid:before {
   position: relative;
-  left: -7px;
+  left: -6px;
   content: "\2713";
 }
