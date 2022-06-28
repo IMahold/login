@@ -4,7 +4,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Upload from "./components/Upload/Upload";
-import Signup from "./components/SIgnup/Signup";
+import Signup from "./components/Signup/Signup";
 
 function App() {
   return (
