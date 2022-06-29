@@ -7,7 +7,7 @@ export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState(""); //pass target
   const [email, setEmail] = useState(""); // email target
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
   const [currentClass, setCurrentClass] = useState("defaulList");
   const [numSymbClass, setNumSymbClass] = useState("defaultList");
@@ -116,35 +116,27 @@ export default function Signup() {
             </span>
           </div>
 
-          {checked === true && (
-            <div className="conditions">
-              <ul>
-                <li className={lengthClass}>Contains at least 6 characters</li>
-                <li className={currentClass}>
-                  Contains both lower (a-z) and upper case letters (A-Z)
-                </li>
-                <li className={numSymbClass}>
-                  Contains at least one number (0-9) or a symbol
-                </li>
-              </ul>
-            </div>
-          )}
-          {/* <div className="checkbox">
-            <input
-              type="checkbox"
-              onChange={() => setChecked(!checked)}
-              checked={checked}
-            />
-            <p>I agree to terms & conditions</p>
-          </div> */}
+          {/* {checked === false && ( */}
+          <div className="conditions">
+            <ul>
+              <li className={lengthClass}>Contains at least 6 characters</li>
+              <li className={currentClass}>
+                Contains both lower (a-z) and upper case letters (A-Z)
+              </li>
+              <li className={numSymbClass}>
+                Contains at least one number (0-9) or a symbol
+              </li>
+            </ul>
+          </div>
+          {/* )} */}
 
           <label htmlFor="check" className="container">
             <input
               className="checkbox-input"
               type="checkbox"
               id="check"
-              onChange={() => setChecked(!checked)}
-              checked={checked}
+              // onChange={() => setChecked(!checked)}
+              // checked={checked}
             />
             <span className="mark"></span>I agree to terms & conditions
           </label>

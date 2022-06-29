@@ -1,7 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImAttachment } from "react-icons/im";
 import "./upload.css";
+// import { RiDeleteBin5Line } from "react-icons/ri";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 export default function Upload() {
   /**
@@ -56,6 +58,15 @@ export default function Upload() {
      */
   };
 
+  const removeFile = (item) => {
+    const arr = files.filter((x) => x.name !== item.name);
+    setFiles(arr);
+  };
+
+  useEffect(() => {
+    console.log("TEST!!");
+  }, [files]);
+
   console.log(files);
   return (
     <div className="upload-container">
@@ -80,10 +91,18 @@ export default function Upload() {
       </div>
 
       <div className="uploaded">
-        <p>Uploaded</p>
-        {files.map((item) => (
-          <div>{item.name}</div>
-        ))}
+        <div className="uploaded-items">
+          <p className="upload-p">Uploaded</p>
+          {files.map((item) => (
+            <div className="box-items">
+              <p>{item.name}</p>
+              <DeleteOutlineIcon
+                onClick={() => removeFile(item)}
+                className="delete-icon"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
