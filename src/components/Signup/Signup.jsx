@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./signup.css";
-import { SIGN_UR } from "../../api/api";
+import { SIGN_URL } from "../../api/api";
 
 export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
@@ -32,7 +32,7 @@ export default function Signup() {
     console.log("Items", items);
 
     try {
-      const response = await axios.post(SIGN_UR, JSON.stringify(items), {
+      const response = await axios.post(SIGN_URL, JSON.stringify(items), {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -126,6 +126,7 @@ export default function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="emailInput"
+              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
               // required
             />
           </div>
