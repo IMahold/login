@@ -20,7 +20,7 @@ a {
   text-decoration: none;
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
   padding: 20px 16px;
   width: 100%;

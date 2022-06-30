@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./signup.css";
+import { SIGN_UR } from "../../api/api";
 
 export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
@@ -13,6 +15,7 @@ export default function Signup() {
   const [numSymbClass, setNumSymbClass] = useState("defaultList");
   const [lengthClass, setLengthClass] = useState("defaultList");
 
+  // toggle password
   const togglePassword = () => {
     if (passwordType === "password") {
       setPasswordType("text");
@@ -20,7 +23,49 @@ export default function Signup() {
     }
     setPasswordType("password");
   };
-  const handleSubmit = (e) => e.preventDefault();
+
+  // submit function
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const items = { email, passwordInput };
+    console.log("Items", items);
+
+    try {
+      const response = await axios.post(SIGN_UR, JSON.stringify(items), {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      console.log(JSON.stringify(response?.data));
+      console.log(JSON.stringify(response));
+    } catch (error) {
+      console.log("Error message", error.message);
+    }
+  };
+
+  //Test function
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const items = { email, passwordInput };
+  //   console.log("Items", items);
+
+  //   fetch(SIGN_URL, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify(items),
+  //   }).then(() => {
+  //     console.log("New user created");
+  //   });
+
+  // console.log(JSON.stringify(response?.data));
+  // console.log(JSON.stringify(response));
+  // };
 
   // When the user starts to type something inside the password field
 
@@ -79,7 +124,7 @@ export default function Signup() {
               value={email}
               name="email"
               onChange={(e) => setEmail(e.target.value)}
-              type="text"
+              type="email"
               id="emailInput"
               // required
             />

@@ -93,3 +93,7 @@
 .delete-icon:hover {
   cursor: pointer;
 }
+
+#file {
+  width: 100%;
+}
