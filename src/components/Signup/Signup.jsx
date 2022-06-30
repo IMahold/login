@@ -30,42 +30,18 @@ export default function Signup() {
     e.preventDefault();
     const items = { email, passwordInput };
     console.log("Items", items);
-
-    try {
-      const response = await axios.post(SIGN_URL, JSON.stringify(items), {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+    axios
+      .post(SIGN_URL, {
+        email: email,
+        password: passwordInput,
+      })
+      .then((res) => {
+        console.log("rr", res);
+      })
+      .catch((err) => {
+        console.log("err", err);
       });
-      console.log(JSON.stringify(response?.data));
-      console.log(JSON.stringify(response));
-    } catch (error) {
-      console.log("Error message", error.message);
-    }
   };
-
-  //Test function
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const items = { email, passwordInput };
-  //   console.log("Items", items);
-
-  //   fetch(SIGN_URL, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify(items),
-  //   }).then(() => {
-  //     console.log("New user created");
-  //   });
-
-  // console.log(JSON.stringify(response?.data));
-  // console.log(JSON.stringify(response));
-  // };
 
   // When the user starts to type something inside the password field
 
@@ -126,7 +102,7 @@ export default function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="emailInput"
-              pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               // required
             />
           </div>
