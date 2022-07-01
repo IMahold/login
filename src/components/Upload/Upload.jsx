@@ -26,11 +26,32 @@ export default function Upload() {
     setFiles([...files, file]);
     const data = new FormData();
     data.append("file", file);
+
     /**
      * set is uploading=true after fetch request to show to
      * here comes the fetch axios...
      */
+
+    await axios.post("http://localhost:3000/upload", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      onUploadProgress: (progressEvent) => {
+        const progress = (progressEvent.loaded / progressEvent.total) * 50;
+        setProgress(progress);
+      },
+      onDownloadProgress: (progressEvent) => {
+        const progress = 50 + (progressEvent.loaded / progressEvent.total) * 50;
+        console.log(progress);
+        setProgress(progress);
+      },
+    });
+    setIsSuccess(true);
   };
+
+  /////////////////////////////////////////
+
+  /////////////////////////////////////////
 
   //remove files
   const removeFile = (item) => {
@@ -51,7 +72,7 @@ export default function Upload() {
             <p>Drag and drop upload file or import file from your computer</p>
             <form onSubmit={submitForm}>
               <input
-                onChange={handleInput}
+                onChange={handleInput} // HANDELE INPUT !!!
                 type="file"
                 id="file"
                 name="file"

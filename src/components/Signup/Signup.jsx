@@ -28,8 +28,6 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const items = { email, passwordInput };
-    console.log("Items", items);
     axios
       .post(SIGN_URL, {
         email: email,

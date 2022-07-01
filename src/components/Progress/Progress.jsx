@@ -27,15 +27,15 @@ export default function LinearProgressWithLabel() {
     const formData = new FormData();
     formData.append(file.name, file, file.name);
 
-    // axios
-    //   .post("http://localhost:3000/upload", formData)
-    //   .then((res) => {
-    //     file.isUploading = false;
-    //     setFiles([...files, file]);
-    //   })
-    //   .catch((err) => {
-    //     console.log("Error", err);
-    //   });
+    axios
+      .post("http://localhost:3000/upload", formData)
+      .then((res) => {
+        file.isUploading = false;
+        setFiles([...files, file]);
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      });
   };
 
   return (
