@@ -101,6 +101,10 @@ export default function Upload() {
                   />
                 </div>
                 <LinearProgress variant="determinate" value={progress} />
+                {/* <LinearProgressWithLabel value={progress} />
+                <Typography variant="body2" color="text.secondary">{`${Math.round(
+          props.value,
+        )}%`}</Typography> */}
               </>
             ))}
           </div>

@@ -100,7 +100,8 @@ export default function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="emailInput"
-              pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              // pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
               // required
             />
           </div>
