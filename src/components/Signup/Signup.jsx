@@ -4,6 +4,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./signup.css";
 import { SIGN_URL } from "../../api/api";
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [passwordType, setPasswordType] = useState("password");
@@ -100,7 +101,6 @@ export default function Signup() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="emailInput"
-              // pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
               // required
             />
@@ -161,8 +161,9 @@ export default function Signup() {
             />
             <span className="mark"></span>I agree to terms & conditions
           </label>
-
-          <button className="register-button">Register Account</button>
+          <Link to="/">
+            <button className="register-button">Register Account</button>
+          </Link>
         </form>
       </div>
     </div>

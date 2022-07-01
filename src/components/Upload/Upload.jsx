@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { ImAttachment } from "react-icons/im";
 import "./upload.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
+import { UPLOAD_URL } from "../../api/api";
 
 export default function Upload() {
   /**
@@ -39,6 +41,7 @@ export default function Upload() {
       onUploadProgress: (progressEvent) => {
         const progress = (progressEvent.loaded / progressEvent.total) * 50;
         setProgress(progress);
+        // setProgress([...progress, progress]);
       },
       onDownloadProgress: (progressEvent) => {
         const progress = 50 + (progressEvent.loaded / progressEvent.total) * 50;
@@ -47,6 +50,7 @@ export default function Upload() {
       },
     });
     setIsSuccess(true);
+    return { isSuccess, progress };
   };
 
   /////////////////////////////////////////
@@ -61,7 +65,7 @@ export default function Upload() {
 
   // useEffect(() => {
   //   console.log("TEST!!");
-  // }, [files]);
+  // }, [progress]);
 
   console.log(files);
   return (
@@ -91,7 +95,7 @@ export default function Upload() {
         <div className="uploaded">
           <div className="uploaded-items">
             <p className="upload-p">Uploaded</p>
-            {files.map((item) => (
+            {files.map((item, idx) => (
               <>
                 <div key={item} className="box-items">
                   <p>{item.name}</p>
@@ -101,6 +105,13 @@ export default function Upload() {
                   />
                 </div>
                 <LinearProgress variant="determinate" value={progress} />
+                <Typography
+                  variant="caption"
+                  component="div"
+                  color="text.secondary"
+                >
+                  {`${Math.round(progress)}%`}
+                </Typography>
                 {/* <LinearProgressWithLabel value={progress} />
                 <Typography variant="body2" color="text.secondary">{`${Math.round(
           props.value,
