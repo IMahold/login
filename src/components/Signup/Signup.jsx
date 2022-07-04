@@ -161,7 +161,7 @@ export default function Signup() {
             />
             <span className="mark"></span>I agree to terms & conditions
           </label>
-          <Link to="/">
+          <Link to="/registration">
             <button className="register-button">Register Account</button>
           </Link>
         </form>

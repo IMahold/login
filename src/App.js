@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Upload from "./components/Upload/Upload";
 import Signup from "./components/Signup/Signup";
+import Registration from "./components/Registration/Registration";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route exact path="/upload" component={Upload} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/registration" component={Registration} />
         </Switch>
       </BrowserRouter>
     </div>
