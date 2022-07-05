@@ -4,9 +4,11 @@ import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./signup.css";
 import { SIGN_URL } from "../../api/api";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Signup() {
+  const history = useHistory();
+
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState(""); //pass target
   const [email, setEmail] = useState(""); // email target
@@ -25,21 +27,28 @@ export default function Signup() {
     setPasswordType("password");
   };
 
-  // submit function
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post(SIGN_URL, {
+
+    try {
+      const response = await axios.post(SIGN_URL, {
         email: email,
         password: passwordInput,
-      })
-      .then((res) => {
-        console.log("rr", res);
-      })
-      .catch((err) => {
-        console.log("err", err);
       });
+      console.log("Response is", response);
+
+      if (response.data === "user has been created successfully") {
+        history.push("/registration");
+      } else alert("Error registering");
+    } catch (error) {
+      console.log("Login Error", error.message);
+    }
+  };
+
+  //validate
+
+  const validate = (values) => {
+    const errrors = {};
   };
 
   // When the user starts to type something inside the password field
@@ -86,7 +95,7 @@ export default function Signup() {
         <form onSubmit={handleSubmit}>
           <p className="register-text">Create Account</p>
           {/* Email input */}
-          <div className="password-input">
+          <div className="email-input">
             <label
               htmlFor="emailInput"
               className={email.length === 0 ? "label" : "label label-active"}
@@ -102,9 +111,15 @@ export default function Signup() {
               type="email"
               id="emailInput"
               pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
-              // required
+              required
             />
           </div>
+          <p className="email-address">
+            An account with this email address already exists.{" "}
+            <Link to="/">
+              <span>Sign in</span>{" "}
+            </Link>{" "}
+          </p>
 
           {/* Password input */}
 
@@ -161,9 +176,9 @@ export default function Signup() {
             />
             <span className="mark"></span>I agree to terms & conditions
           </label>
-          <Link to="/registration">
-            <button className="register-button">Register Account</button>
-          </Link>
+          {/* <Link to="/registration"> */}
+          <button className="register-button">Register Account</button>
+          {/* </Link> */}
         </form>
       </div>
     </div>

@@ -17,11 +17,27 @@
 }
 
 .email-input {
-  margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.email-input input[type="email"]:focus {
+  border-color: red;
+  outline: 0;
 }
 
 .pass-input {
   position: relative;
+}
+
+.email-address {
+  margin-top: -25px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #e41d1d;
+}
+.email-address span {
+  color: #006ab3;
 }
 
 .show-icon {

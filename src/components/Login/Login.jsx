@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { LOGIN_URL } from "../../api/api";
 
 export default function Login() {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
   const [email, setEmail] = useState("");
+
+  const history = useHistory();
 
   const handlePasswordChange = (e) => {
     setPasswordInput(e.target.value);
@@ -20,10 +24,28 @@ export default function Login() {
     setPasswordType("password");
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(LOGIN_URL, {
+        email: email,
+        password: passwordInput,
+      });
+      console.log("Response is", response);
+
+      if (response.data === "authenticated successfully") {
+        history.push("/upload");
+      } else alert("Wrong email or password");
+    } catch (error) {
+      console.log("Login Error", error.message);
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-form">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <p className="main-text">Login to your Account</p>
           {/* Email input */}
           <div className="password-input">
@@ -40,6 +62,8 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="emailInput"
+              pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"
+              required
             />
           </div>
 
@@ -61,6 +85,7 @@ export default function Login() {
               value={passwordInput}
               name="password"
               id="passwordInput"
+              required
             />
             <span onClick={togglePassword}>
               {passwordType === "password" ? (
@@ -73,9 +98,11 @@ export default function Login() {
         </form>
 
         <p className="forgot">Forgot Password?</p>
-        <Link to="/upload" style={{ textDecoration: "none" }}>
-          <button className="login-button">Login</button>
-        </Link>
+        {/* <Link to="/upload" style={{ textDecoration: "none" }}> */}
+        <button onClick={handleSubmit} className="login-button">
+          Login
+        </button>
+        {/* </Link> */}
         <p className="account">
           Don't have an account?{" "}
           <Link to="/signup">

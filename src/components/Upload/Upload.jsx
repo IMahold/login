@@ -24,10 +24,36 @@ export default function Upload() {
     if (!file) {
       return;
     }
-    file.isUploading = true;
+    // file.isUploading = true;
     setFiles([...files, file]);
     const data = new FormData();
     data.append("file", file);
+    console.log("Data is ", data);
+
+    // try {
+    //   const response = await axios.post(UPLOAD_URL, data, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //     onUploadProgress: (progressEvent) => {
+    //       const progress = (progressEvent.loaded / progressEvent.total) * 50;
+    //       setProgress(progress);
+    //       // setProgress([...progress, progress]);
+    //     },
+    //     onDownloadProgress: (progressEvent) => {
+    //       const progress =
+    //         50 + (progressEvent.loaded / progressEvent.total) * 50;
+    //       console.log(progress);
+    //       setProgress(progress);
+    //     },
+    //   });
+    //   setIsSuccess(true);
+    //   return { isSuccess, progress };
+
+    //   console.log("Response is", response);
+    // } catch (error) {
+    //   console.log("upload Error", error.message);
+    // }
 
     /**
      * set is uploading=true after fetch request to show to
@@ -43,19 +69,15 @@ export default function Upload() {
         setProgress(progress);
         // setProgress([...progress, progress]);
       },
-      onDownloadProgress: (progressEvent) => {
-        const progress = 50 + (progressEvent.loaded / progressEvent.total) * 50;
-        console.log(progress);
-        setProgress(progress);
-      },
+      // onDownloadProgress: (progressEvent) => {
+      //   const progress = 50 + (progressEvent.loaded / progressEvent.total) * 50;
+      //   console.log(progress);
+      //   setProgress(progress);
+      // },
     });
     setIsSuccess(true);
-    return { isSuccess, progress };
+    // return { isSuccess, progress };
   };
-
-  /////////////////////////////////////////
-
-  /////////////////////////////////////////
 
   //remove files
   const removeFile = (item) => {
@@ -76,7 +98,7 @@ export default function Upload() {
             <p>Drag and drop upload file or import file from your computer</p>
             <form onSubmit={submitForm}>
               <input
-                onChange={handleInput} // HANDELE INPUT !!!
+                onChange={handleInput} // HANDLE INPUT !!!
                 type="file"
                 id="file"
                 name="file"
@@ -104,13 +126,13 @@ export default function Upload() {
                     className="delete-icon"
                   />
                 </div>
-                <LinearProgress variant="determinate" value={progress} />
+                <LinearProgress variant="determinate" value={item.progress} />
                 <Typography
                   variant="caption"
                   component="div"
                   color="text.secondary"
                 >
-                  {`${Math.round(progress)}%`}
+                  {`${Math.round(item.progress)}%`}
                 </Typography>
                 {/* <LinearProgressWithLabel value={progress} />
                 <Typography variant="body2" color="text.secondary">{`${Math.round(
