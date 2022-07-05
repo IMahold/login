@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Upload from "./components/Upload/Upload";
 import Signup from "./components/Signup/Signup";
 import Registration from "./components/Registration/Registration";
-import Test from "./components/Test";
 // import UploadCopy from "./components/Upload/UploadCopy";
 
 function App() {
@@ -14,7 +13,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        {/* <Test /> */}
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/upload" component={Upload} />
