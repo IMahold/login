@@ -24,48 +24,25 @@ export default function Upload() {
     if (!file) {
       return;
     }
-    // file.isUploading = true;
+    file.isUploading = true;
     setFiles([...files, file]);
     const data = new FormData();
     data.append("file", file);
-    console.log("Data is ", data);
-
-    // try {
-    //   const response = await axios.post(UPLOAD_URL, data, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //     onUploadProgress: (progressEvent) => {
-    //       const progress = (progressEvent.loaded / progressEvent.total) * 50;
-    //       setProgress(progress);
-    //       // setProgress([...progress, progress]);
-    //     },
-    //     onDownloadProgress: (progressEvent) => {
-    //       const progress =
-    //         50 + (progressEvent.loaded / progressEvent.total) * 50;
-    //       console.log(progress);
-    //       setProgress(progress);
-    //     },
-    //   });
-    //   setIsSuccess(true);
-    //   return { isSuccess, progress };
-
-    //   console.log("Response is", response);
-    // } catch (error) {
-    //   console.log("upload Error", error.message);
-    // }
-
     /**
      * set is uploading=true after fetch request to show to
      * here comes the fetch axios...
      */
 
-    await axios.post("http://localhost:3000/upload", data, {
+    await axios.post(UPLOAD_URL, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
       onUploadProgress: (progressEvent) => {
-        const progress = (progressEvent.loaded / progressEvent.total) * 50;
+        const progress = Math.round(
+          (100 * progressEvent.loaded) / progressEvent.total
+        );
+        // const progress = (progressEvent.loaded / progressEvent.total) * 50;
+        console.log("Progress is ", progress);
         setProgress(progress);
         // setProgress([...progress, progress]);
       },
@@ -89,7 +66,7 @@ export default function Upload() {
   //   console.log("TEST!!");
   // }, [progress]);
 
-  console.log(files);
+  console.log("Files are", files);
   return (
     <>
       <div className="upload-container">
@@ -126,13 +103,13 @@ export default function Upload() {
                     className="delete-icon"
                   />
                 </div>
-                <LinearProgress variant="determinate" value={item.progress} />
+                <LinearProgress variant="determinate" value={progress} />
                 <Typography
                   variant="caption"
                   component="div"
                   color="text.secondary"
                 >
-                  {`${Math.round(item.progress)}%`}
+                  {`${Math.round(progress)}%`}
                 </Typography>
                 {/* <LinearProgressWithLabel value={progress} />
                 <Typography variant="body2" color="text.secondary">{`${Math.round(

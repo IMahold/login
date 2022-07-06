@@ -34,7 +34,7 @@ export default function Login() {
       });
       console.log("Response is", response);
 
-      if (response.data === "authenticated successfully") {
+      if (response.status === 200) {
         history.push("/upload");
       } else alert("Wrong email or password");
     } catch (error) {

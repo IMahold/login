@@ -37,7 +37,7 @@ export default function Signup() {
       });
       console.log("Response is", response);
 
-      if (response.data === "user has been created successfully") {
+      if (response.status === 200) {
         history.push("/registration");
       } else alert("Error registering");
     } catch (error) {
