@@ -2,19 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import "./signup.css";
 import { SIGN_URL } from "../../api/api";
 import { Link, useHistory } from "react-router-dom";
+import "./signup.css";
 
 export default function Signup() {
   const history = useHistory();
-
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState(""); //pass target
   const [email, setEmail] = useState(""); // email target
   // const [checked, setChecked] = useState(false);
 
-  const [currentClass, setCurrentClass] = useState("defaulList");
+  const [currentClass, setCurrentClass] = useState("defaultList");
   const [numSymbClass, setNumSymbClass] = useState("defaultList");
   const [lengthClass, setLengthClass] = useState("defaultList");
 
@@ -43,12 +42,6 @@ export default function Signup() {
     } catch (error) {
       console.log("Login Error", error.message);
     }
-  };
-
-  //validate
-
-  const validate = (values) => {
-    const errrors = {};
   };
 
   // When the user starts to type something inside the password field
@@ -83,7 +76,6 @@ export default function Signup() {
       !passwordInput.match(symbols)
     ) {
       setNumSymbClass("defaultList");
-
       setCurrentClass("defaultList");
       setLengthClass("defaultList");
     }

@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
 import { UPLOAD_URL } from "../../api/api";
 
-export default function Upload() {
+export default function Uploadcopy() {
   /**
    *  @param {React.ChangeEvent<HTMLInputElement>} e
    */
@@ -30,7 +30,7 @@ export default function Upload() {
     setFiles([...files, file]);
     const data = new FormData();
     data.append("file", file);
-    // console.log("FormData is", [...data]);
+    console.log("FormData is", [...data]);
 
     await axios
       .post(
@@ -53,7 +53,7 @@ export default function Upload() {
       )
       .then(async (res) => {
         // res.data
-        console.log("Response data", res.data);
+        console.log("asdqweqwe", res.data);
         const myHeaders = new Headers({ "Content-Type": file.type });
         await fetch(res.data, {
           method: "PUT",
@@ -74,9 +74,7 @@ export default function Upload() {
     setFiles(arr);
   };
 
-  useEffect(() => {
-    console.log("TEST!!");
-  }, []);
+  useEffect(() => {}, []);
 
   // console.log("Files are", files);
   return (
