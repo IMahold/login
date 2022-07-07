@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Upload from "./components/Upload/Upload";
 import Signup from "./components/Signup/Signup";
 import Registration from "./components/Registration/Registration";
-// import UploadCopy from "./components/Upload/UploadCopy";
+// import Uploadcopy from "./components/Upload/Uploadcopy";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/upload" component={Upload} />
-          {/* <Route exact path="/upload" component={UploadCopy} /> */}
+          {/* <Route exact path="/upload" component={Uploadcopy} /> */}
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/registration" component={Registration} />
         </Switch>

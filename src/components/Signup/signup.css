@@ -21,14 +21,19 @@
   margin-bottom: 30px;
 }
 
-.email-input input[type="email"]:focus {
+/* .email-input input[type="email"]:focus {
+  border-color: red;
+  outline: 0;
+} */
+
+.password-input input[type="password"]:focus {
   border-color: red;
   outline: 0;
 }
 
-.pass-input {
+/* .pass-input {
   position: relative;
-}
+} */
 
 .email-address {
   margin-top: -25px;

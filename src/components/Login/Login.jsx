@@ -38,7 +38,7 @@ export default function Login() {
         history.push("/upload");
       } else alert("Wrong email or password");
     } catch (error) {
-      console.log("Login Error", error.message);
+      console.log("Login Error !!!", error);
     }
   };
 

@@ -28,6 +28,8 @@ export default function Upload() {
     setFiles([...files, file]);
     const data = new FormData();
     data.append("file", file);
+
+    console.log("FormData is", [...data]);
     /**
      * set is uploading=true after fetch request to show to
      * here comes the fetch axios...
