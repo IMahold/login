@@ -7,20 +7,23 @@ import Upload from "./components/Upload/Upload";
 import Signup from "./components/Signup/Signup";
 import Registration from "./components/Registration/Registration";
 // import Uploadcopy from "./components/Upload/Uploadcopy";
+import MyContextProvider from "./components/Context";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/upload" component={Upload} />
-          {/* <Route exact path="/upload" component={Uploadcopy} /> */}
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/registration" component={Registration} />
-        </Switch>
-      </BrowserRouter>
+      <MyContextProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/upload" component={Upload} />
+            {/* <Route exact path="/upload" component={Uploadcopy} /> */}
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/registration" component={Registration} />
+          </Switch>
+        </BrowserRouter>
+      </MyContextProvider>
     </div>
   );
 }

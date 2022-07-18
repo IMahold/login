@@ -1,19 +1,25 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ImAttachment } from "react-icons/im";
 import "./upload.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
 import { UPLOAD_URL } from "../../api/api";
+import { CREATE_SESS_URL } from "../../api/api";
+import { MyContext } from "../Context";
 
 export default function Upload() {
   /**
    *  @param {React.ChangeEvent<HTMLInputElement>} e
    */
+
+  const { user, setUser, id, setID } = useContext(MyContext);
+
   const [files, setFiles] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [email, setEmail] = useState(""); // email target
 
   const [selectedFiles, setSelectedFiles] = useState(undefined);
 
@@ -32,10 +38,37 @@ export default function Upload() {
     data.append("file", file);
     // console.log("FormData is", [...data]);
 
+    // POST: createSession
+    try {
+      const response = await axios.post(CREATE_SESS_URL, {
+        email: user,
+      });
+      console.log("Response is", response);
+    } catch (error) {
+      console.log("Login Error !!!", error);
+    }
+
+    console.log("email", email);
+
+    // POST: createSession
+    // try {
+    //   const response = await axios.post(CREATE_SESS_URL, {
+    //     email: email,
+    //   });
+    //   console.log("Response is", response);
+    //   const sessionId = response.body;
+    //   console.log("Session Id", sessionId);
+    // } catch (error) {
+    //   console.log("Login Error !!!", error);
+    // }
+
     await axios
       .post(
         UPLOAD_URL,
         {
+          // email: user,
+          // sessionId: id,
+          // fileName: file,
           email: "m.umer@fenris-group.com",
           sessionId: "1657187512",
           fileName: "file1.json",
@@ -64,8 +97,41 @@ export default function Upload() {
       .catch((err) => {
         console.log("Error upload", err);
       });
+
+    // PUT file as binary in request body
+
+    // try {
+    //   const response = await axios.post(UPLOAD_URL, {
+    //     email,
+    //     sessionId,
+    //     fileName
+
+    //   });
+    //   console.log("Response is", response);
+    //     const uploadFileURL = response.body
+
+    //    if (response.status === 200) {
+    //     history.push("/upload");
+    //   } else alert("File is not uploaded");
+
+    // } catch (error) {
+    //   console.log("Login Error !!!", error);
+    // }
+    // };
+
+    // PUT file as binary in request body
+
+    const myHeaders = new Headers({ "Content-Type": files.type });
+    await fetch(
+      "https://vf3hmbf48f.execute-api.eu-central-1.amazonaws.com/v1/createUser",
+      {
+        method: "PUT",
+        headers: myHeaders,
+        body: files,
+      }
+    );
+
     setIsSuccess(true);
-    // return { isSuccess, progress };
   };
 
   //remove files
@@ -78,7 +144,7 @@ export default function Upload() {
     console.log("TEST!!");
   }, []);
 
-  // console.log("Files are", files);
+  console.log("Files are", files);
   return (
     <>
       <div className="upload-container">
@@ -123,10 +189,6 @@ export default function Upload() {
                 >
                   {`${Math.round(progress)}%`}
                 </Typography>
-                {/* <LinearProgressWithLabel value={progress} />
-                <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography> */}
               </>
             ))}
           </div>
