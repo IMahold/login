@@ -5,3 +5,6 @@ export const UPLOAD_URL =
 
 export const LOGIN_URL =
   "https://vf3hmbf48f.execute-api.eu-central-1.amazonaws.com/v1/authenticateUser";
+
+export const CREATE_SESS_URL =
+  "https://vf3hmbf48f.execute-api.eu-central-1.amazonaws.com/v1/createSession";

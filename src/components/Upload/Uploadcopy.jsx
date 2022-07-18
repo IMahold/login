@@ -1,21 +1,56 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { ImAttachment } from "react-icons/im";
 import "./upload.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Typography from "@mui/material/Typography";
-import LinearProgress from "@mui/material/LinearProgress";
+// import LinearProgress from "@mui/material/LinearProgress";
 import { UPLOAD_URL } from "../../api/api";
+import { CREATE_SESS_URL } from "../../api/api";
+import { MyContext } from "../Context";
+import { UploadFile } from "@mui/icons-material";
+import FilesProgress from "../FilesProgress/FilesProgress";
 
 export default function Uploadcopy() {
   /**
    *  @param {React.ChangeEvent<HTMLInputElement>} e
    */
-  const [files, setFiles] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [progress, setProgress] = useState(0);
 
-  const [selectedFiles, setSelectedFiles] = useState(undefined);
+  const { user, setUser, id, setID } = useContext(MyContext);
+
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  // create an object
+
+  const objArr = [
+    {
+      selectedFiles1: 100,
+    },
+    {
+      selectedFiles2: 100,
+    },
+    {
+      selectedFiles3: 5,
+    },
+    {
+      selectedFiles4: 20,
+    },
+  ];
+  const [progress, setProgress] = useState([]);
+  // const [email, setEmail] = useState(""); // email target
+
+  // const [selectedFiles, setSelectedFiles] = useState(undefined);
+
+  // useEffect(() => {
+  //   async function upload() {
+  //     const url = await handleInput(selectedFiles, setProgress);
+  //     console.log("URL is", url);
+  //   }
+
+  //   upload();
+  //   console.log("Upload is", upload);
+  // }, []);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -27,56 +62,22 @@ export default function Uploadcopy() {
       return;
     }
     file.isUploading = true;
-    setFiles([...files, file]);
+    setSelectedFiles([...selectedFiles, file]);
     const data = new FormData();
     data.append("file", file);
     console.log("FormData is", [...data]);
-
-    await axios
-      .post(
-        UPLOAD_URL,
-        {
-          email: "m.umer@fenris-group.com",
-          sessionId: "1657187512",
-          fileName: "file1.json",
-        },
-        {
-          headers: {},
-          onUploadProgress: (progressEvent) => {
-            const progress = Math.round(
-              (100 * progressEvent.loaded) / progressEvent.total
-            );
-            console.log("Progress is ", progress);
-            setProgress(progress);
-          },
-        }
-      )
-      .then(async (res) => {
-        // res.data
-        console.log("asdqweqwe", res.data);
-        const myHeaders = new Headers({ "Content-Type": file.type });
-        await fetch(res.data, {
-          method: "PUT",
-          headers: myHeaders,
-          body: file,
-        });
-      })
-      .catch((err) => {
-        console.log("Error upload", err);
-      });
-    setIsSuccess(true);
-    // return { isSuccess, progress };
   };
+
+  useEffect(() => {}, [selectedFiles]);
 
   //remove files
   const removeFile = (item) => {
-    const arr = files.filter((x) => x.name !== item.name);
-    setFiles(arr);
+    const arr = selectedFiles.filter((x) => x.name !== item.name);
+    setSelectedFiles(arr);
   };
 
-  useEffect(() => {}, []);
+  // console.log("Files are", selectedFiles);
 
-  // console.log("Files are", files);
   return (
     <>
       <div className="upload-container">
@@ -104,28 +105,14 @@ export default function Uploadcopy() {
         <div className="uploaded">
           <div className="uploaded-items">
             <p className="upload-p">Uploaded</p>
-            {files.map((item, idx) => (
-              <>
-                <div key={item} className="box-items">
-                  <p>{item.name}</p>
-                  <DeleteOutlineIcon
-                    onClick={() => removeFile(item)}
-                    className="delete-icon"
-                  />
-                </div>
-                <LinearProgress variant="determinate" value={progress} />
-                <Typography
-                  variant="caption"
-                  component="div"
-                  color="text.secondary"
-                >
-                  {`${Math.round(progress)}%`}
-                </Typography>
-                {/* <LinearProgressWithLabel value={progress} />
-                <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography> */}
-              </>
+
+            {selectedFiles.map((item, idx) => (
+              <FilesProgress
+                removeFile={removeFile}
+                progress={progress}
+                idx={idx}
+                item={item}
+              />
             ))}
           </div>
         </div>

@@ -39,28 +39,34 @@ export default function Upload() {
     // console.log("FormData is", [...data]);
 
     // POST: createSession
-    try {
-      const response = await axios.post(CREATE_SESS_URL, {
-        email: user,
-      });
-      console.log("Response is", response);
-    } catch (error) {
-      console.log("Login Error !!!", error);
-    }
-
-    console.log("email", email);
-
-    // POST: createSession
     // try {
     //   const response = await axios.post(CREATE_SESS_URL, {
-    //     email: email,
+    //     email: user,
     //   });
     //   console.log("Response is", response);
-    //   const sessionId = response.body;
-    //   console.log("Session Id", sessionId);
     // } catch (error) {
     //   console.log("Login Error !!!", error);
     // }
+
+    // console.log("email", email);
+
+    // POST: createSession
+    try {
+      const response = await axios.post(CREATE_SESS_URL, {
+        email: email,
+      });
+      console.log("Response", response.data);
+      if (response.status === 200) {
+        console.log("TEST 1 ");
+      } else {
+        console.log("TEST 2 ");
+      }
+      console.log("Response is", response);
+      const sessionId = response.body;
+      console.log("Session Id", sessionId);
+    } catch (error) {
+      console.log("Login Error !!!", error);
+    }
 
     await axios
       .post(

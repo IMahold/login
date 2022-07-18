@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import "./login.css";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import { LOGIN_URL } from "../../api/api";
+import { CREATE_SESS_URL, LOGIN_URL, UPLOAD_URL } from "../../api/api";
+import { MyContext } from "../Context";
 
 export default function Login() {
+  const { user, setUser } = useContext(MyContext);
+  console.log("User !!!!!", user);
+
   const [passwordType, setPasswordType] = useState("password");
   const [passwordInput, setPasswordInput] = useState("");
   const [email, setEmail] = useState("");
+
+  console.log("Email", email);
 
   const history = useHistory();
 
@@ -27,6 +33,8 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setUser(email);
+
     try {
       const response = await axios.post(LOGIN_URL, {
         email: email,
@@ -41,6 +49,29 @@ export default function Login() {
       console.log("Login Error !!!", error);
     }
   };
+
+  //////
+
+  // try {
+  //   const response = await axios.post(UPLOAD_URL, {
+  //     email,
+  //     sessionId,
+  //     fileName
+
+  //   });
+  //   console.log("Response is", response);
+  //     const uploadFileURL = response.body
+
+  //    if (response.status === 200) {
+  //     history.push("/upload");
+  //   } else alert("File is not uploaded");
+
+  // } catch (error) {
+  //   console.log("Login Error !!!", error);
+  // }
+  // };
+
+  /////
 
   return (
     <div className="login-container">
