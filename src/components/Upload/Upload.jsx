@@ -30,6 +30,7 @@ export default function Upload() {
   const handleInput = async (e) => {
     const file = e.target.files[0];
     if (!file) {
+      console.log("Input test");
       return;
     }
     file.isUploading = true;
@@ -51,9 +52,24 @@ export default function Upload() {
     // console.log("email", email);
 
     // POST: createSession
+    console.log("Test console");
+
+    const response = await axios
+      .post(CREATE_SESS_URL, {
+        // email: email,
+        email: "m.umer@fenris-group.com",
+      })
+      .then((res) => {
+        alert("Test !!!!");
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      });
+    // return false;
     try {
       const response = await axios.post(CREATE_SESS_URL, {
-        email: email,
+        // email: email,
+        email: "m.umer@fenris-group.com",
       });
       console.log("Response", response.data);
       if (response.status === 200) {

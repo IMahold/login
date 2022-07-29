@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { ImAttachment } from "react-icons/im";
-import "./upload.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Typography from "@mui/material/Typography";
 // import LinearProgress from "@mui/material/LinearProgress";
@@ -10,6 +8,7 @@ import { CREATE_SESS_URL } from "../../api/api";
 import { MyContext } from "../Context";
 import { UploadFile } from "@mui/icons-material";
 import FilesProgress from "../FilesProgress/FilesProgress";
+import UploadContainer from "./UploadContainer";
 
 export default function Uploadcopy() {
   /**
@@ -23,20 +22,20 @@ export default function Uploadcopy() {
 
   // create an object
 
-  const objArr = [
-    {
-      selectedFiles1: 100,
-    },
-    {
-      selectedFiles2: 100,
-    },
-    {
-      selectedFiles3: 5,
-    },
-    {
-      selectedFiles4: 20,
-    },
-  ];
+  // const objArr = [
+  //   {
+  //     selectedFiles1: 100,
+  //   },
+  //   {
+  //     selectedFiles2: 100,
+  //   },
+  //   {
+  //     selectedFiles3: 5,
+  //   },
+  //   {
+  //     selectedFiles4: 20,
+  //   },
+  // ];
   const [progress, setProgress] = useState([]);
   // const [email, setEmail] = useState(""); // email target
 
@@ -54,21 +53,26 @@ export default function Uploadcopy() {
 
   const submitForm = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", selectedFiles);
   };
 
-  const handleInput = async (e) => {
-    const file = e.target.files[0];
-    if (!file) {
-      return;
-    }
-    file.isUploading = true;
-    setSelectedFiles([...selectedFiles, file]);
-    const data = new FormData();
-    data.append("file", file);
-    console.log("FormData is", [...data]);
+  const handleInput = (e) => {
+    setSelectedFiles(e.target.files[0]);
+    setIsSuccess(true);
+    // selectedFiles(e.target.files[0]);
+    // const file = e.target.files[0];
+    // if (!file) {
+    //   return;
+    // }
+    // file.isUploading = true;
+    // setSelectedFiles([...selectedFiles, file]);
+    // const data = new FormData();
+    // data.append("file", file);
+    // console.log("FormData is", [...data]);
   };
 
-  useEffect(() => {}, [selectedFiles]);
+  // useEffect(() => {}, [selectedFiles]);
 
   //remove files
   const removeFile = (item) => {
@@ -76,31 +80,13 @@ export default function Uploadcopy() {
     setSelectedFiles(arr);
   };
 
-  // console.log("Files are", selectedFiles);
+  console.log("Selected files are", selectedFiles);
+  console.log("Test !!!!");
 
   return (
     <>
       <div className="upload-container">
-        <div className="border">
-          <div className="box">
-            <p>Drag and drop upload file or import file from your computer</p>
-            <form onSubmit={submitForm}>
-              <input
-                onChange={handleInput} // HANDLE INPUT !!!
-                type="file"
-                id="file"
-                name="file"
-                hidden
-                multiple
-                // accept=".json,.xmp"
-              />
-              <label className="button" htmlFor="file">
-                <ImAttachment className="attach-icon" />
-                Browse
-              </label>
-            </form>
-          </div>
-        </div>
+        <UploadContainer onSubmit={submitForm} onChange={handleInput} />
 
         <div className="uploaded">
           <div className="uploaded-items">
