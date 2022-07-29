@@ -82,7 +82,6 @@ export default function Uploadcopy() {
 
   console.log("Selected files are", selectedFiles);
   // console.log("Test !!!!");
-  console.log("fdsfdsf");
 
   return (
     <>
